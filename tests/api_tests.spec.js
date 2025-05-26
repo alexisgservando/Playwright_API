@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
 
+// DELETE REQUEST
 test('API DELETE request', async ({ request }) => {
     const response = await request.delete('https://jsonplaceholder.typicode.com/posts/1');
     expect(response.status(), 'DELETE status should be 204').toBe(200);
 });
 
+// PUT REQUEST
 test('API PUT request', async ({ request }) => {
   const response = await request.put('https://jsonplaceholder.typicode.com/posts/1', {
     json: {
@@ -22,7 +24,7 @@ test('API PUT request', async ({ request }) => {
   expect(body).toHaveProperty('id', 1); // minimal assertion
 });
 
-
+// POST REQUEST
 test('API POST request', async ({ request }) => {
     const response = await request.post('https://jsonplaceholder.typicode.com/posts', {
         json: {
@@ -41,6 +43,7 @@ test('API POST request', async ({ request }) => {
     console.log('POST response:', body);
 });
 
+// GET REQUEST
 test('API GET request', async ({ request }) => {
     const response = await request.get('https://jsonplaceholder.typicode.com/posts/1');
     expect(response.status(), 'GET status should be 200').toBe(200);
